@@ -4,7 +4,7 @@ pipeline {
     tools {
         maven 'Maven'
         jdk 'JDK17'
-        python 'Python3'
+        // python 'Python3'
     }
 
     stages {
