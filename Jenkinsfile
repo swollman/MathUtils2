@@ -28,8 +28,8 @@ pipeline {
         stage('Run Python Tests') {
             steps {
                 sh '''
-                    pip install pytest
-                    pytest src/main/python --junitxml=python-test-results.xml
+                    /Library/Frameworks/Python.framework/Versions/3.13/bin/pip3 install pytest
+                    /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m pytest src/main/python --junitxml=python-test-results.xml
                 '''
             }
             post {
