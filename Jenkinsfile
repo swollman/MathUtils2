@@ -45,5 +45,3 @@ pipeline {
         cron('H H * * *')
     }
 }
-
-
