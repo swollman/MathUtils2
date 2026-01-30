@@ -2,9 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven'
+        maven 'Maven3'
         jdk 'JDK17'
-        // python 'Python3'
     }
 
     stages {
@@ -17,9 +16,7 @@ pipeline {
 
         stage('Build Java with Maven') {
             steps {
-                dir('src/main/java') {
-                    sh 'mvn -f ../../pom.xml clean test'
-                }
+                sh 'mvn clean test'
             }
             post {
                 always {
@@ -32,7 +29,7 @@ pipeline {
             steps {
                 sh '''
                     pip install pytest
-                    pytest src/test/python --junitxml=python-test-results.xml
+                    pytest src/main/python --junitxml=python-test-results.xml
                 '''
             }
             post {
@@ -46,11 +43,5 @@ pipeline {
     triggers {
         githubPush()
         cron('H H * * *')
-    }
-
-    post {
-        always {
-            echo "Build completed."
-        }
     }
 }
